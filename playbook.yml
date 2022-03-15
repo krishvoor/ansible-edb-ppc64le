@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  name: Setup Postgres Repositories
+  name: Setup EnterpriseDB on ppc64le
   become: yes
   gather_facts: yes
   vars_files:
@@ -20,3 +20,13 @@
         pg_type: "{{ type }}"
         repo_username: "{{ username }}"
         repo_password: "{{ password }}"
+-
+  name: Prep the environment
+  hosts: localhost
+  tasks:
+    - name: Change home directory
+      ansible.builtin.user:
+        name: enterprisedb
+        groups: enterprisedb, wheel
+        move_home: yes
+        home: /data/
