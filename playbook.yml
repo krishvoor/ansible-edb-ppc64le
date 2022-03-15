@@ -9,6 +9,10 @@
   collections:
     - edb_devops.edb_postgres
 
+  roles:
+    - setup_repo
+    - install_dbserver
+
   pre_tasks:
     - name: Initialize the user defined variables
       set_fact:
@@ -16,6 +20,3 @@
         pg_type: "{{ type }}"
         repo_username: "{{ username }}"
         repo_password: "{{ password }}"
-  roles:
-    - setup_repo
-    - install_dbserver
