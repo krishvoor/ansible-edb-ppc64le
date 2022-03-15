@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
-  name: Setup EnterpriseDB on ppc64le
+- name: Setup EnterpriseDB on ppc64le
+  hosts: localhost
   become: yes
   gather_facts: yes
   vars_files:
@@ -20,9 +20,7 @@
         pg_type: "{{ type }}"
         repo_username: "{{ username }}"
         repo_password: "{{ password }}"
--
-  name: Prep the environment
-  hosts: localhost
+
   tasks:
     - name: Change home directory
       ansible.builtin.user:
